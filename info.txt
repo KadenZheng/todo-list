@@ -1,0 +1,19 @@
+Todos will contain:
+- Title
+- Description
+- duedate
+- Priority
+- Notes
+
+Application should include:
+- Projects to group Todos
+- a "default" project with Todos for the User to open to
+
+Functionality should include:
+- Create new Todos
+- Set Todos as complete
+- Changing Todo Priority
+
+Additional Functionality
+- have different types of todos, i.e. Todos with descriptions, Todos with checklists (i.e. grocery lists), etc.
+- tags?
