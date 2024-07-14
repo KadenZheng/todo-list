@@ -4,11 +4,74 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>todo list</title>
-        <link rel="stylesheet" href="./css/style.css" />
     </head>
     <body>
         <div id="container">
-            <div class="fixed top-0 h-screen w-52 bg-black">hi</div>
+            <div id="sidebar"></div>
+            <div id="main-content"></div>
+            <dialog id="modal">
+                <div id="modal-container">
+                    <div class="create">create a new to-do</div>
+                    <div class="new-name">
+                        <div class="stack-container">
+                            <label for="name">name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                    </div>
+                    <div class="new-desc">
+                        <div class="stack-container">
+                            <label for="desc">description</label>
+                            <textarea name="desc" id="desc"></textarea>
+                        </div>
+                    </div>
+                    <div class="projects"></div>
+                    <div class="due-urg">
+                        <div class="stack-container" style="width: 47%">
+                            <label for="due">due date</label>
+                            <input type="date" name="due" id="due" />
+                        </div>
+                        <div class="stack-container" style="width: 47%">
+                            <div class="urgency-text">urgency</div>
+                            <div class="urgency-selectors">
+                                <div class="urgency-1">
+                                    <input type="radio" name="urgency" id="" />
+                                    <label for="urgency">none</label>
+                                </div>
+                                <div class="urgency-2">
+                                    <input type="radio" name="urgency" id="!" />
+                                    <label
+                                        for="urgency"
+                                        style="color: lightsalmon"
+                                        >small</label
+                                    >
+                                </div>
+                                <div class="urgency-3">
+                                    <input
+                                        type="radio"
+                                        name="urgency"
+                                        id="!!"
+                                    />
+                                    <label for="urgency" style="color: coral"
+                                        >most</label
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <div class="cancel">cancel</div>
+                        <div class="submit">
+                            <button>submit</button>
+                        </div>
+                    </div>
+                </div>
+            </dialog>
+            <dialog id="newProj">
+                <div class="stack-container">
+                    <label for="name">new project name</label>
+                    <input type="text" name="name" id="name" />
+                </div>
+            </dialog>
         </div>
     </body>
 </html>

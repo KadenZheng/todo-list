@@ -1,13 +1,15 @@
-import calendar from '../../public/assets/icons/calendar1.png';
+import { totalProjects } from './createCard';
+import createMain from './main';
+import removeFilters from './cancelFilters';
 
-const tab_list = ['all todos', 'personal', 'work', 'me time', 'household'];
+const tab_list = [];
 
 let container = document.querySelector('#container');
 
 const createTop = () => {
-    let main_content = document.createElement('div');
-    main_content.id = 'main-content';
-    container.appendChild(main_content);
+    const uniqueProjects = new Set(totalProjects);
+
+    let main_content = document.querySelector('#main-content');
 
     let top_tab = document.createElement('div');
     top_tab.id = 'top-tab';
@@ -40,13 +42,41 @@ const createTop = () => {
     let tabs = document.createElement('div');
     tabs.classList.add('tabs');
 
-    for (let i = 0; i < tab_list.length; i++) {
+    // Function to handle tab selection
+    const selectTab = (selectedTab) => {
+        tabs.querySelectorAll('.tab').forEach((tab) => {
+            tab.classList.remove('tab-bold');
+        });
+        selectedTab.classList.add('tab-bold');
+    };
+
+    for (let projectName of uniqueProjects) {
         let tab = document.createElement('div');
         tab.classList.add('tab');
-        tab.innerHTML = tab_list[i];
+        tab.innerHTML = projectName;
+        tab.style.cursor = 'pointer';
+        tab.addEventListener('click', () => {
+            selectTab(tab);
+            document.querySelector('#content').remove();
+            createMain(projectName);
+        });
         tabs.appendChild(tab);
     }
+
+    let new_proj_tab = document.createElement('div');
+    new_proj_tab.classList.add('tab');
+    new_proj_tab.id = 'addProject';
+    new_proj_tab.innerHTML = 'add new project';
+    new_proj_tab.style.color = 'cornflowerblue';
+    tabs.appendChild(new_proj_tab);
     top_tab.appendChild(tabs);
+
+    let cancel_filters = document.createElement('div');
+    cancel_filters.classList.add('tab');
+    cancel_filters.id = 'cancel';
+    cancel_filters.innerHTML = 'remove filters';
+    cancel_filters.addEventListener('click', removeFilters);
+    tabs.appendChild(cancel_filters);
 };
 
 export default createTop;

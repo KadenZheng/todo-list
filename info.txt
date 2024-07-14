@@ -4,6 +4,7 @@ Todos will contain:
 - duedate
 - Priority
 - Notes
+- Project
 
 Application should include:
 - Projects to group Todos
